@@ -11,6 +11,7 @@ public class ScoreServiceV1 {
 	protected List<ScoreVO> scoreList;
 	ScoreVO scoreVO;
 	String strName;
+	
 	public ScoreServiceV1() {
 		scan = new Scanner(System.in);
 		scoreList = new ArrayList<ScoreVO>();
@@ -18,7 +19,7 @@ public class ScoreServiceV1 {
 	}
 
 	public void menuScore() {
-		Integer intMenu = null;
+		String strMenu = null;
 		while (true) {
 			System.out.println("=".repeat(50));
 			System.out.println("빛고을 고등학교 성적처리 시스템 2021");
@@ -28,22 +29,21 @@ public class ScoreServiceV1 {
 			System.out.println("QUIT. 업무종료");
 			System.out.println("=".repeat(50));
 			System.out.print("업무선택 >> ");
-			String strMenu = scan.nextLine();
+			strMenu = scan.nextLine();
 			if (strMenu.equals("QUIT")) {
 				break;
 			}
 			
 			try {
-				intMenu = Integer.valueOf(strMenu);
+				Integer intMenu = Integer.valueOf(strMenu);
 			} catch (Exception e) {
 				System.out.println("메뉴 선택 오류");
 				System.out.println("메뉴는 1 ~ 2, QUIT 만 입력가능");
 				continue;
 			}
+			int intMenu = 0;
 			if (intMenu == 1) {
-				this.strName();
 				this.inputScore();
-				this.printScore();
 			} else if (intMenu == 2) {
 				this.printList();
 			}
@@ -63,6 +63,7 @@ public class ScoreServiceV1 {
 				break;
 			}else {
 				scoreVO.setName(strName);
+				break;
 			}
 			
 		}

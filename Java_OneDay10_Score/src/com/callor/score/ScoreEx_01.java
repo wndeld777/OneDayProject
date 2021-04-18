@@ -11,6 +11,5 @@ public class ScoreEx_01 {
 		ssV1.inputScore();
 		ssV1.printScore();
 		
-	
 	}
 }

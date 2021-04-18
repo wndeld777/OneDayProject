@@ -21,7 +21,8 @@ public class WordServiceImplV1 implements WordService {
 	protected Scanner scan;
 	protected final int 영어 = 0;
 	protected final int 한글 = 0;
-	WordVO wordVO = new WordVO();
+	protected WordVO wordVO = new WordVO();
+	Integer totalCount = 10;
 	public WordServiceImplV1() {
 		wordList = new ArrayList<WordVO>();
 		scan = new Scanner(System.in);
@@ -68,7 +69,22 @@ public class WordServiceImplV1 implements WordService {
 	@Override
 	public void printWord() {
 		// TODO Auto-generated method stub
-
+		
+		while(true) {
+			System.out.println("1. 처음시작, 2. 이어서시작");
+			System.out.print(">> ");
+			String selectScore = scan.nextLine();
+			if(selectScore.equals("1")) {
+				totalCount = 10;
+				return;
+			}else if(selectScore.equals("2")) {
+				loadScore();
+				return;
+			}else if(selectScore.equals("")) {
+				System.out.println("1,2 중 선택해주세요");
+				continue;
+			}
+		}
 	}
 
 	@Override
@@ -76,7 +92,6 @@ public class WordServiceImplV1 implements WordService {
 		
 		
 		Random rnd = new Random();
-		Integer totalCount = 10;
 		
 		while (true) {
 			WordVO wordVO = this.getWord();
@@ -91,6 +106,8 @@ public class WordServiceImplV1 implements WordService {
 				strWords[index1] = strWords[index2];
 				strWords[index2] = temp;
 			}
+		
+			
 			
 
 			System.out.println("=".repeat(80));
@@ -200,8 +217,7 @@ public class WordServiceImplV1 implements WordService {
 		try {
 			fileWriter = new FileWriter(strFileName);
 			out = new PrintWriter(fileWriter);
-			out.println(wordVO.getCount());
-			System.out.println(wordVO.getCount());
+			out.println(totalCount);
 			out.flush();
 			out.close();
 
@@ -214,20 +230,29 @@ public class WordServiceImplV1 implements WordService {
 	@Override
 	public void loadScore() {
 		// TODO Auto-generated method stub
-		String fileName = "src/com/callor/word/wordScore.txt";
+		System.out.println("저장된 파일이름을 입력하세요");
+		System.out.print(">> ");
+		String loadFile = scan.nextLine();
+		if(loadFile.equals("")) {
+			System.out.println("파일이름은 반드시 입력하세요");
+		}
 		
 		FileReader fileReader = null;
+		BufferedReader buffer = null;
 		try {
-			fileReader = new FileReader(fileName);
+			fileReader = new FileReader("src/com/callor/word/" + loadFile + ".txt");
+			buffer = new BufferedReader(fileReader);
+			String score = buffer.readLine();
+			totalCount = Integer.valueOf(score);
+			buffer.close();
 			
-			Integer result = fileReader.read(); 
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("파일을 여는 동안 오류 발생");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("파일을 읽는 동안 오류 발생");
 		}
 		
 		

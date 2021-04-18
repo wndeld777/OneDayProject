@@ -8,6 +8,7 @@ public class ScoreVO {
 	private Integer math;
 	private Integer sci;
 	private Integer his;
+	
 	private Integer sum;
 	private float avg;
 	
