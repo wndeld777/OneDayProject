@@ -1,46 +1,34 @@
 package com.callor.blackjack.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import com.callor.blackjack.model.CardVO;
+
 public class Card {
-	public static final int NUMBER_OF_CARDS_IN_A_DECK = 52;
-	public final int suitNumber;
-	public final int rankNumber;
 
-	public Card(int suitNumber, int rankNumber) {
-        this.suitNumber = suitNumber;
-        this.rankNumber = rankNumber;
-    }
-
-	public String getSuit() {
-		switch (suitNumber) {
-		case 1:
-			return "Clubs";
-		case 2:
-			return "Diamonds";
-		case 3:
-			return "Hearts";
-		case 4:
-			return "Spades";
-		default:
-			return "";
+	protected List<CardVO> cardList;
+	protected Random rnd;
+	public Card() {
+		cardList = new ArrayList<CardVO>();
+		rnd = new Random();
+	}
+	
+	public void inputCard() {
+		String patterns[] = {"spade","heart","diamond","club"};
+		String card[] = {"2","3","4","5","6","7","8","9","10","Ace","Jack","Queen","King"};
+		
+		
+		for(int i = 0 ; i < patterns.length ; i++) {
+			for(int j = 0 ; j < card.length ; j++) {
+				System.out.print(patterns[i]);
+				System.out.println(card[j]);
+			}
 		}
 	}
-
-	public String getRank() {
-		switch (rankNumber) {
-		case 1:
-			return "Ace";
-		case 11:
-			return "Jack";
-		case 12:
-			return "Queen";
-		case 13:
-			return "King";
-		default:
-			return String.valueOf(rankNumber);
-		}
-	}
-
-	public String toString() {
-		return getRank() + " of " + getSuit();
-	}
+	
+	
+	
+	
 }
