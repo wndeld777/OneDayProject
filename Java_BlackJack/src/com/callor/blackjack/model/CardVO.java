@@ -2,13 +2,13 @@ package com.callor.blackjack.model;
 
 public class CardVO {
 
-	Integer cards;
+	String cards;
 
-	public Integer getCards() {
+	public String getCards() {
 		return cards;
 	}
 
-	public void setCards(Integer cards) {
+	public void setCards(String cards) {
 		this.cards = cards;
 	}
 }

@@ -8,6 +8,5 @@ public class BlackjackEx_01 {
 		
 		Card card = new Card();
 		card.inputCard();
-		card.printCard();
 	}
 }
