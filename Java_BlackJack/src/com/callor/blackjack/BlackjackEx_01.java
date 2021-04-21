@@ -1,12 +1,12 @@
 package com.callor.blackjack;
 
-import com.callor.blackjack.service.Card;
+import com.callor.blackjack.service.DeckServiceV1;
 
 public class BlackjackEx_01 {
 
 	public static void main(String[] args) {
 		
-		Card card = new Card();
-		card.inputCard();
+		DeckServiceV1 dsV1 = new DeckServiceV1();
+		dsV1.makeDeck();
 	}
 }
