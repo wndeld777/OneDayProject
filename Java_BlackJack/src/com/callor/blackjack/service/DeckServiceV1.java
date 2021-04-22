@@ -1,6 +1,7 @@
 package com.callor.blackjack.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -17,14 +18,25 @@ public class DeckServiceV1 {
 		rnd = new Random();
 	}
 	
-	public DeckVO getDeck() {
-		int nSize = deckList.size();
-		int deckIndex = rnd.nextInt(nSize);
-
-		DeckVO retDeckVO = deckList.get(deckIndex);
-		deckList.remove(deckIndex);
-		return retDeckVO;
-		
+//	public List<DeckVO> getDeck() {
+//		int nSize = deckList.size();
+//		Integer deckIndex = null;
+//		try {
+//			deckIndex = rnd.nextInt(nSize);
+//			System.out.println(deckIndex);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("오류");
+//		}
+//
+//		DeckVO retDeckVO = deckList.get(deckIndex);
+//		deckList.remove(deckIndex);
+//		return retDeckVO;
+	public List<DeckVO> getDeck(){
+		for(DeckVO vo : deckList) {
+			Collections.shuffle(this.deckList);
+		}
+		return this.deckList;
 	}
 	
 	public void makeDeck() {
@@ -51,7 +63,6 @@ public class DeckServiceV1 {
 				deckVO.setDenomiation(denom);
 				deckVO.setValue(intValue);
 				deckList.add(deckVO);
-				System.out.println(deckVO);
 			}
 		}
 		

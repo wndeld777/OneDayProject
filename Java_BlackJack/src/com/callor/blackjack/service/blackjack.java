@@ -174,10 +174,10 @@ public class blackjack {
      * Display Users && Dealers Cards
      */
     public void displayUsersCards() {
-        System.out.println("You Have: " + usersCards);
+        System.out.println("플레이어 카드: " + usersCards);
     }
     public void displayDealersCards() {
-        System.out.println("The Dealer Has: " + dealersCards);
+        System.out.println("딜러 카드: " + dealersCards);
     }
     /*
      * Check For BlackJack
@@ -190,11 +190,11 @@ public class blackjack {
          * Check Dealers BlackJack
          */
         if(dealersValue == 21) {
-            System.out.println("Dealer Has BlackJack! You Lose");
+            System.out.println("딜러 BlackJack! 플레이어 Lose");
             System.exit(0);
         }
         if(usersValue == 21) {
-            System.out.println("You Have BlackJack! You Win!");
+            System.out.println("BlackJack! 플레이어 Win!");
             System.exit(0);
         }
 
@@ -235,12 +235,12 @@ public class blackjack {
         getUsersValue(usersValue);
 
         if(dealersValue > 21) {
-            System.out.println("Dealer Has Bust - You Win!");
+            System.out.println("딜러 카드값이 21보다 큼 - 플레이어 승!");
             System.exit(0);
         }
 
         if(usersValue > 21) { 
-            System.out.println("You've Bust - You Lose!");
+            System.out.println("플레이어카드값이 21보다 큼 - 플레이어 패!");
             System.exit(0);
         }
     }
@@ -253,7 +253,7 @@ public class blackjack {
         getDealersValue(dealersValue);
 
         if(dealersValue <=16) {
-            System.out.println("Dealer Has 16 or Less - Twisting");
+            System.out.println("딜러 카드값이 16점 이하 - 한장더");
             generateDealersCard();
             displayDealersCards();
             checkBust();
@@ -266,7 +266,7 @@ public class blackjack {
         }
 
         if(dealersValue > 17) {
-            System.out.println("Dealer Has: " + getDealersValue(dealersValue) + " - Sticking");
+            System.out.println("딜러 카드값: " + getDealersValue(dealersValue) + " - 그만뽑기");
             compareValues();
             System.exit(0);
         }
@@ -274,7 +274,7 @@ public class blackjack {
     }
 
     public void userOptions() {
-        System.out.println("Do You Want To:\n [1] Twist\n [2] Stick");
+        System.out.println("1. 한장더뽑기 2. 그만뽑기");
     }
 
     public static void main(String[] args) {
