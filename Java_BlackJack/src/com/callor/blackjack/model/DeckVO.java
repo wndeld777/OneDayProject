@@ -3,16 +3,16 @@ package com.callor.blackjack.model;
 public class DeckVO {
 
 	private String suit;
-	private String denomiation;
+	private String denomination;
 	private Integer value = 0;
 	
 	public DeckVO() {
 		
 	}
-	public DeckVO(String suit, String denomiation, Integer value) {
+	public DeckVO(String suit, String denomination, Integer value) {
 		super();
 		this.suit = suit;
-		this.denomiation = denomiation;
+		this.denomination = denomination;
 		this.value = value;
 	}
 
@@ -22,11 +22,11 @@ public class DeckVO {
 	public void setSuit(String suit) {
 		this.suit = suit;
 	}
-	public String getDenomiation() {
-		return denomiation;
+	public String getdenomination() {
+		return denomination;
 	}
-	public void setDenomiation(String denomiation) {
-		this.denomiation = denomiation;
+	public void setdenomination(String denomination) {
+		this.denomination = denomination;
 	}
 	public Integer getValue() {
 		return value;
@@ -36,7 +36,7 @@ public class DeckVO {
 	}
 	@Override
 	public String toString() {
-		return "DeckVO [suit=" + suit + ", denomiation=" + denomiation + ", value=" + value + "]";
+		return " [무늬=" + suit + ", 숫자=" + denomination + ", 점수=" + value + "]";
 	}
 	
 }

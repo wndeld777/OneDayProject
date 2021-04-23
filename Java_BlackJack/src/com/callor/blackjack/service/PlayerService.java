@@ -15,6 +15,7 @@ public class PlayerService {
 	List<DeckVO> pubDeckList;
 	String playerName;
 	List<DeckVO> deckList;
+
 	// 플레이어 이름이 없는 상태로 생성이 되면 이것을 "딜러"로 사용
 	public PlayerService(List<DeckVO> deckList) {
 
@@ -71,7 +72,7 @@ public class PlayerService {
 		deckList = dS.getDeck();
 		PlayerService 딜러 = new PlayerService(deckList);
 		PlayerService 게이머 = new PlayerService(deckList, "게이머");
-		
+
 		System.out.println("=".repeat(50));
 		System.out.println("게임을 시작합니다");
 
@@ -105,37 +106,33 @@ public class PlayerService {
 				if (딜러.sumValue() <= i) {
 					System.out.println("딜러가 한장을 더 뽑습니다");
 					딜러.hit();
-					if (딜러.sumValue() > 21) {
-						System.out.println("딜러 패!!");
-						break;
-					} else if (게이머.sumValue() == 21) {
-						System.out.println("Blackjack 딜러 승!!");
-						break;
-					}
-
 				}
-
 			}
 
-			if (딜러.sumValue() > 17 || 딜러.sumValue() <= 21) {
+			if (딜러.sumValue() > 21) {
 				System.out.println("딜러의 턴이 끝났습니다");
+				System.out.println("딜러 패!!");
+				break;
+			} else if (딜러.sumValue() == 21) {
+				System.out.println("Blackjack 딜러 승!!");
+				break;
+			}
+
+			if (딜러.sumValue() > 16 && 딜러.sumValue() < 22) {
 				if (딜러.sumValue() > 게이머.sumValue()) {
 					System.out.println("딜러가 이겼습니다");
 					break;
 				} else if (딜러.sumValue() < 게이머.sumValue()) {
 					System.out.println("게이머가 이겼습니다");
 					break;
-				} else if (딜러.sumValue() == 게이머.sumValue()) {
-					System.out.println("비겼습니다");
-					break;
 				}
-			} else if (딜러.sumValue() == 21) {
-				System.out.println("딜러 BlackJack!!");
-			} else {
-				System.out.println("딜러가 점수범위를 벗어나 졌습니다");
+				break;
+			} else if (딜러.sumValue() == 게이머.sumValue()) {
+				System.out.println("비겼습니다");
+				break;
 			}
-
 		}
+
 	}
 
 }
