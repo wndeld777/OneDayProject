@@ -116,8 +116,10 @@ public class PlayerService {
 			} else if (딜러.sumValue() == 21) {
 				System.out.println("Blackjack 딜러 승!!");
 				break;
+			}else if (딜러.sumValue() == 게이머.sumValue()) {
+				System.out.println("비겼습니다");
+				break;
 			}
-
 			if (딜러.sumValue() > 16 && 딜러.sumValue() < 22) {
 				if (딜러.sumValue() > 게이머.sumValue()) {
 					System.out.println("딜러가 이겼습니다");
@@ -127,10 +129,8 @@ public class PlayerService {
 					break;
 				}
 				break;
-			} else if (딜러.sumValue() == 게이머.sumValue()) {
-				System.out.println("비겼습니다");
-				break;
 			}
+			
 		}
 
 	}
